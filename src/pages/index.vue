@@ -75,6 +75,7 @@
     return Math.floor((b - a + 1) * Math.random()) + a
   }
 
+  const minDate = ref(new Date().toISOString().split("T")[0]);
   const selectedDate = ref<string>("");
   watch(selectedDate, (newDate) => {
     alert('Yes it is available')
@@ -182,31 +183,9 @@
                 label="Reserve date"
                 prepend-icon="mdi-calendar"
                 variant="outlined"
+                :min="minDate"
               ></v-date-input>
             </v-col>
-            <!-- <v-col
-              cols="6"
-              sm="5"
-            >
-              <v-text-field
-                v-model="time"
-                label="Pick a time"
-                readonly
-                variant="outlined"
-              >
-                <v-menu
-                  v-model="menu2"
-                  :close-on-content-click="false"
-                  activator="parent"
-                  transition="scale-transition"
-                >
-                  <v-time-picker
-                    v-model="time"
-                    full-width
-                  ></v-time-picker>
-                </v-menu>
-              </v-text-field>
-            </v-col> -->
           </v-row>
           <v-calendar
             ref="calendar"
